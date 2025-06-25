@@ -6,7 +6,7 @@ console.log('Hello world');
 // Données de Départ
 // ========================================================================
 
-const data:MediaData = {
+const data: MediaData = {
   books: [
     {
       title: "The Hobbit",
@@ -31,7 +31,7 @@ const data:MediaData = {
       year: 2019,
     },
   ],
-  albums: [
+  album: [
     {
       title: "Thriller",
       artist: "Michael Jackson",
@@ -54,6 +54,8 @@ const data:MediaData = {
 // 2. Créez une constante "isOnline" de type boolean indiquant si l'application est connectée.
 // 3. Créez une constante "maxItems" de type number représentant un maximum autorisé.
 
+console.log('Exercice 1');
+
 const appName: string = 'Ma belle application du turfu';
 console.log(appName);
 const isOnline: boolean = true;
@@ -69,6 +71,8 @@ console.log(maxItems);
 // 1. Créez une interface "Book" avec les propriétés correspondantes.
 // 2. Créez une interface "Movie" avec les propriétés correspondantes.
 // 3. Créez une interface "Album" avec les propriétés correspondantes.
+
+console.log('Exercice 2');
 
 interface Book {
   title: string,
@@ -100,11 +104,13 @@ interface Album {
 // 2. Typez la constante `data` contenant les données (plus haut dans le fichier)
 //    avec l’interface MediaData.
 
-  interface MediaData{
-    books:Book[],
-    movies:Movie[],
-    album:Album[];
-  }
+console.log('Exercice 3')
+
+interface MediaData {
+  books: Book[],
+  movies: Movie[],
+  album: Album[];
+}
 
 // ========================================================================
 // Exercice 4 : Fonction d’Affichage Contextuel
@@ -119,9 +125,23 @@ interface Album {
 //     - "Film : Inception réalisé par Christopher Nolan (2010)"
 //     - "Album : Thriller par Michael Jackson (1982)"
 
-function displayItemDetails(input: Book[] | Movie[] | Album[]){
-  console.log(input);
+console.log('Exercice 4')
+
+function displayItemDetails(item: Book | Movie | Album){
+
+  if('auhor' in item){
+    console.log(`Réalisateur : ${data.movies[0].title} ${data.movies[0].director} ${data.movies[0].year}`)
+  }
+  else if('director' in item){
+    console.log(`Réalisateur : ${data.movies[0].title} ${data.movies[0].director} ${data.movies[0].year}`)
+  }
+  else if('artist' in item){
+    console.log(`Artiste : ${data.album[0].title} ${data.album[0].artist} ${data.album[0].year}`)
+  }
 }
+
+displayItemDetails(data.album[0]);
+
 // ========================================================================
 // Exercice 5 : Boucle sur Tous les Éléments
 // ========================================================================
